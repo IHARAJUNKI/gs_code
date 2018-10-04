@@ -1,0 +1,60 @@
+body {
+    background: #ff4b1f;  
+    background: -webkit-linear-gradient(to right, #ff4b1f, #1fddff); 
+    background: linear-gradient(to right, #ff4b1f, #1fddff); 
+    text-align: center;
+    font-size:20px;
+}
+
+
+div{
+    margin-top:150px;
+    line-height: 0em;
+}
+
+span{
+    padding: 8px 19px;
+    color: 	#000033;
+    font-size:40px;
+    border-top: solid 5px #2c2c2f;
+    border-bottom: solid 5px #2c2c2f;
+}
+
+#log{
+    margin-top:100px;
+}
+
+#login{
+    width: 150px;
+    height: 25px;
+}
+
+#password{
+    width: 150px;
+    height: 25px;
+}
+
+#submit{
+    width: 200px;
+    font-size:20px;
+    margin-top:40px;
+    background-color: #1fddff;
+}
+
+#center{
+        display: inline-block;
+        font-size:20px;
+}
+
+
+.box{
+    font-size:20px;
+    width: 200px;
+    height: 25px;
+    margin-left:30px;
+    margin-top:10px;
+    
+}
+
+
+
