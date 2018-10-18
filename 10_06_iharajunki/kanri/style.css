@@ -1,0 +1,16 @@
+@charset "UTF-8";
+.ib {
+	display:inline-block;
+}
+.th0, .th1, .th2, .td0, .td1, .td2 {
+	display:inline-block;
+}
+.th0, .th1, .th2 {
+	text-align:center;
+}
+.th0, .td0 {
+	width:10em;
+}
+.th1, .td1 {
+	width:20em;
+}
