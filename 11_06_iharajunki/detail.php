@@ -5,10 +5,8 @@ $pdo = new PDO('mysql:dbname=gs_db;charset=utf8;host=localhost','root','');
 $sql = $pdo->prepare('SELECT * FROM syouhin WHERE id =?');
 $sql->execute([$_REQUEST['id']]);
 foreach($sql as $row){
-    //  echo '<p><img src = "image/',$row['id'],'.jpg"></p>';
-    //echo '<img src = "upload/20181020174929d41d8cd98f00b204e9800998ecf8427e.jpg">';
+    echo '<p><img src = "image/',$row['id'],'.jpg"></p>';
     echo '<form action = "cart_insert.php" method = "POST">';
-    echo '<img src="kanri/'.$row['image'] .'">';
     echo '<p>商品番号：',$row['id'],'</p>';
     echo '<p>商品名：',$row['name'],'</p>';
     echo '<p>価格：',$row['price'],'</p>';
@@ -20,12 +18,8 @@ foreach($sql as $row){
     echo '<input type = "hidden" name = "id" value = "',$row['id'],'">';
     echo '<input type = "hidden" name = "name" value = "',$row['name'],'">';
     echo '<input type = "hidden" name = "price" value = "',$row['price'],'">';
-    echo '<input type = "hidden" name = "image" value = "',$row['image'],'">';
     echo '<p><input type = "submit" value = "カートに入れる"></p>';
     echo '</form>';
     echo '<p><a href = "favorite_insert.php?id=',$row['id'],'">お気に入りに追加</a></p>';
 }
-
 ?>
-
-<img src="../upload/20181022233404d41d8cd98f00b204e9800998ecf8427e.jpg">

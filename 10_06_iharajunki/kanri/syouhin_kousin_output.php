@@ -1,6 +1,5 @@
 <?php require "kanri.php"?>
-
-<?php 
+<?php
 $name   = $_POST["name"];
 $price  = $_POST["price"];
 
@@ -28,19 +27,24 @@ if (isset($_FILES["upfile"] ) && $_FILES["upfile"]["error"] ==0 ) {
   }else{
     exit("画像が送信されていません"); //Error文字
   }
-  
+
 $pdo = new PDO('mysql:dbname=gs_db;charset=utf8;host=localhost','root','');
-$stmt = $pdo->prepare("INSERT INTO syouhin(id, name, price, image)
-VALUES(NULL, :a1, :a2,:image)");
-// $stmt = $pdo->prepare("INSERT INTO gs_an_table(id, name, email, naiyou,
-// indate, image  )VALUES(NULL, :a1, :a2, :a3, sysdate(), :image)");
+$stmt  = $pdo->prepare("update syouhin set name =:a1, price =:a2, image =:image  where id = ?");
 $stmt->bindValue(':a1', $name,   PDO::PARAM_STR);  //Integer（数値の場合 PDO::PARAM_INT)
 $stmt->bindValue(':a2', $price,  PDO::PARAM_STR);  //Integer（数値の場合 PDO::PARAM_INT)
 $stmt->bindValue(':image', $file_name, PDO::PARAM_STR);  //画像
 $status = $stmt->execute();
-if($status==false){
-    echo '商品を追加できませんでした';
-}else{
-    echo '商品を追加しました';
+
+if (empty($_REQUEST['name'])) {
+	echo '商品名を入力してください。';
+} else
+if (!preg_match('/[0-9]+/', $_REQUEST['price'])) {
+	echo '商品価格を整数で入力してください。';
+} else
+if ($status==false) {
+	echo '更新に失敗しました。';
+} else {
+	echo '更新に成功しました。';
 }
 ?>
+

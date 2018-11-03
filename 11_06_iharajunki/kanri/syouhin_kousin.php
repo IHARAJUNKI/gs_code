@@ -5,10 +5,9 @@
 <div class = "th1">価格</div>
 
 <?php
-
 $pdo = new PDO('mysql:dbname=gs_db;charset=utf8;host=localhost','root','');
 foreach($pdo->query('select * from syouhin') as $row){
-    echo '<form method="POST" action="syouhin_kousin_output.php" enctype="multipart/form-data">';
+    echo '<form action = "syouhininput_kousin_output.php" method = "POST">';
     echo '<input type = "hidden" name = "id" value = "' ,$row['id'],'">';
     echo '<div class = "td0">',$row['id'],'</div>';
     echo '<div class = "td1">';
@@ -16,9 +15,6 @@ foreach($pdo->query('select * from syouhin') as $row){
     echo '</div>';
     echo '<div class = "td1">';
     echo '<input type = "text" name = "price" value = "' ,$row['price'],'">';
-    echo '</div>';
-    echo '<div class = "td1">';
-    echo '<input type = "file" name = "upfile" value = "' ,$row['image'],'">';
     echo '</div>';
     echo '<div class = "td2"><input type = "submit" value = "更新"></div>';
     echo '</form>';
